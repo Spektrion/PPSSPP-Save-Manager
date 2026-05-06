@@ -98,10 +98,22 @@ class SyncService : Service() {
             val saveDir = DocumentFile.fromTreeUri(this, uri) ?: return
             val localGames = saveDir.listFiles().filter { it.isDirectory }.associateBy { it.name }
 
+            // 1. Sync games that are on PC (Handles PC->Android and updates to existing Android->PC)
             for ((gameId, pcFiles) in pcGames) {
                 val localGameDir = localGames[gameId]
                 if (localGameDir != null) {
                     syncGameFiles(ip, pin, gameId, pcFiles, localGameDir)
+                }
+            }
+
+            // 2. NEW: Check games that are on Android but NOT on PC, and push them
+            for ((gameId, localGameDir) in localGames) {
+                if (gameId != null && !pcGames.containsKey(gameId)) {
+                    // This game is new on Android, push all its files to PC
+                    val files = localGameDir.listFiles().filter { it.isFile }
+                    for (file in files) {
+                        uploadFile(ip, pin, gameId, file.name!!, file.lastModified() / 1000, file)
+                    }
                 }
             }
         } catch (e: Exception) {

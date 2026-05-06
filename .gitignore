@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+build/
+dist/
+*.spec
+config.json
+
+# Android
+.gradle/
+build/
+captures/
+*.apk
+*.aar
+*.jks
+local.properties
+.idea/
+*.iml
+
+# OS
+Thumbs.db
+db.lock
+.DS_Store
+
+# PPSSPP Sync Specific
+pc_server/icon.ico
+pc_server/icon.png

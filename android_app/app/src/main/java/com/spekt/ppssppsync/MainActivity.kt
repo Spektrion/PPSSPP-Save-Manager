@@ -174,6 +174,7 @@ class MainActivity : ComponentActivity() {
                     val saveDir = DocumentFile.fromTreeUri(this@MainActivity, selectedDirectoryUri!!)
                     val localGames = saveDir?.listFiles()?.filter { it.isDirectory }?.associateBy { it.name } ?: emptyMap()
                     
+                    // 1. Sync existing games on PC
                     for ((gameId, pcFiles) in pcGames) {
                         if (localGames.containsKey(gameId)) {
                             withContext(Dispatchers.Main) { appendLog("Syncing $gameId...") }
@@ -185,6 +186,17 @@ class MainActivity : ComponentActivity() {
                                 showForceDialog = true
                             }
                             while(showForceDialog) { kotlinx.coroutines.delay(500) }
+                        }
+                    }
+
+                    // 2. NEW: Sync games that are ONLY on Android
+                    for ((gameId, localGameDir) in localGames) {
+                        if (gameId != null && !pcGames.containsKey(gameId)) {
+                            withContext(Dispatchers.Main) { appendLog("Pushing new game $gameId to PC...") }
+                            val files = localGameDir.listFiles().filter { it.isFile }
+                            for (file in files) {
+                                uploadFile(client, ip, pin, gameId, file.name!!, file.lastModified() / 1000, file)
+                            }
                         }
                     }
                     
