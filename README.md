@@ -28,6 +28,9 @@ This project provides a bi-directional, automated synchronization solution for P
 - **No Cloud:** Your data never leaves your local WiFi network.
 - **Open Communication:** Uses standard HTTP protocols on port 5000.
 - **Auth:** All requests must include the `X-Sync-Pin` header matching the server-generated PIN.
+  
+<img width="991" height="518" alt="image" src="https://github.com/user-attachments/assets/f3fa94f0-f06e-4f15-8f71-bdf6aa0337ae" />
+<img width="1220" height="1890" alt="Screenshot_20260505-231957_PPSSPP Sync (1)" src="https://github.com/user-attachments/assets/3bc99832-99c8-4131-8cf2-16fd2bd6588a" />
 
 ## 📖 Setup Instructions
 
