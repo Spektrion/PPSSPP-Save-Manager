@@ -29,6 +29,11 @@ This project provides a bi-directional, automated synchronization solution for P
 - **Open Communication:** Uses standard HTTP protocols on port 5000.
 - **Auth:** All requests must include the `X-Sync-Pin` header matching the server-generated PIN.
 
+## 🖼️ APP/Program Preview
+<img width="991" height="518" alt="image" src="https://github.com/user-attachments/assets/f3fa94f0-f06e-4f15-8f71-bdf6aa0337ae" />
+<img width="1220" height="1844" alt="Screenshot_20260505-232240_PPSSPP Sync (1)" src="https://github.com/user-attachments/assets/778efb2d-386f-4220-9609-e0680a4b2096" />
+
+
 ## 📖 Setup Instructions
 
 ### Windows (Server)
