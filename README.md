@@ -42,6 +42,23 @@ This project provides a bi-directional, automated synchronization solution for P
 3. Enter the IP and PIN provided by the PC app.
 4. Toggle **Automatic Sync** and grant the required notification permissions.
 
+## 🔨 Building from Source
+
+If you prefer to build the binaries yourself:
+
+### PC (Windows)
+1. Install [Python 3.10+](https://www.python.org/).
+2. Navigate to the `pc_server` folder.
+3. Ensure you have an `icon.png` file (512x512 recommended) in the folder.
+4. Run `build.bat`. The compiled executable will be in the `dist` folder.
+
+### Android
+1. Install [Android Studio](https://developer.android.com/studio).
+2. Open the `android_app` folder as an Android Studio project.
+3. Wait for Gradle sync to complete.
+4. Go to **Build > Build Bundle(s) / APK(s) > Build APK(s)**.
+5. The APK will be generated in `app/build/outputs/apk/debug/`.
+
 ---
 
 *Developed for the PPSSPP Community. This tool is not affiliated with the official PPSSPP project.*
